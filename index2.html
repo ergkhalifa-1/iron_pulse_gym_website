@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IronPulse Gym Ghana | Transform Your Strength</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="antialiased">
+
+    <div class="noise-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="navigateTo('home')">
+                    <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-yellow-400 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-dumbbell text-black text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="heading-font text-2xl font-bold text-white">IRON<span class="text-orange-500">PULSE</span></span>
+                        <p class="text-xs text-gray-400 tracking-widest">GHANA</p>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <button onclick="navigateTo('home')" class="nav-link text-sm font-semibold text-white hover:text-orange-500 transition-colors uppercase tracking-wider" data-page="home">Home</button>
+                    <button onclick="navigateTo('about')" class="nav-link text-sm font-semibold text-gray-300 hover:text-orange-500 transition-colors uppercase tracking-wider" data-page="about">About</button>
+                    <button onclick="navigateTo('classes')" class="nav-link text-sm font-semibold text-gray-300 hover:text-orange-500 transition-colors uppercase tracking-wider" data-page="classes">Classes</button>
+                    <button onclick="navigateTo('trainers')" class="nav-link text-sm font-semibold text-gray-300 hover:text-orange-500 transition-colors uppercase tracking-wider" data-page="trainers">Trainers</button>
+                    <button onclick="navigateTo('membership')" class="nav-link text-sm font-semibold text-gray-300 hover:text-orange-500 transition-colors uppercase tracking-wider" data-page="membership">Membership</button>
+                    <button onclick="navigateTo('contact')" class="nav-link text-sm font-semibold text-gray-300 hover:text-orange-500 transition-colors uppercase tracking-wider" data-page="contact">Contact</button>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-4">
+                    <button onclick="navigateTo('membership')" class="bg-orange-500 hover:bg-orange-600 text-black font-bold py-2 px-6 rounded-full transition-all transform hover:scale-105 uppercase text-sm tracking-wider">
+                        Join Now
+                    </button>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button onclick="toggleMobileMenu()" class="text-white hover:text-orange-500 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu fixed top-0 right-0 w-80 h-full bg-black border-l border-orange-500/30 z-50 p-8 md:hidden" id="mobileMenu">
+            <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-white hover:text-orange-500">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+            <div class="mt-12 space-y-6">
+                <button onclick="navigateTo('home'); toggleMobileMenu()" class="block text-xl font-bold text-white hover:text-orange-500 uppercase">Home</button>
+                <button onclick="navigateTo('about'); toggleMobileMenu()" class="block text-xl font-bold text-gray-300 hover:text-orange-500 uppercase">About</button>
+                <button onclick="navigateTo('classes'); toggleMobileMenu()" class="block text-xl font-bold text-gray-300 hover:text-orange-500 uppercase">Classes</button>
+                <button onclick="navigateTo('trainers'); toggleMobileMenu()" class="block text-xl font-bold text-gray-300 hover:text-orange-500 uppercase">Trainers</button>
+                <button onclick="navigateTo('membership'); toggleMobileMenu()" class="block text-xl font-bold text-gray-300 hover:text-orange-500 uppercase">Membership</button>
+                <button onclick="navigateTo('contact'); toggleMobileMenu()" class="block text-xl font-bold text-gray-300 hover:text-orange-500 uppercase">Contact</button>
+                <button onclick="navigateTo('membership'); toggleMobileMenu()" class="mt-8 w-full bg-orange-500 text-black font-bold py-3 rounded-full uppercase">Join Now</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+        <!-- Hero Section -->
+        <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+            <div class="absolute inset-0 hero-pattern opacity-20"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-90"></div>
+            
+            <!-- Animated Background Elements -->
+            <div class="absolute top-20 left-10 w-72 h-72 bg-orange-500/20 rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-yellow-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <div class="mb-6 inline-block">
+                    <span class="bg-orange-500/20 text-orange-400 border border-orange-500/50 px-4 py-1 rounded-full text-sm font-semibold tracking-wider uppercase animate-fade-in">
+                        Accra's Premier Fitness Destination
+                    </span>
+                </div>
+                
+                <h1 class="heading-font text-5xl md:text-7xl lg:text-9xl font-bold mb-6 leading-tight">
+                    FORGE YOUR<br>
+                    <span class="gradient-text">LEGACY</span>
+                </h1>
+                
+                <p class="text-xl md:text-2xl text-gray-400 mb-10 max-w-2xl mx-auto font-light">
+                    Where Ghana's elite come to transform. State-of-the-art equipment, world-class trainers, and an unstoppable community.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <button onclick="navigateTo('membership')" class="group relative px-8 py-4 bg-orange-500 text-black font-bold text-lg rounded-full overflow-hidden transition-all hover:scale-105">
+                        <span class="relative z-10">Start Your Journey</span>
+                        <div class="absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
+                    </button>
+                    <button onclick="navigateTo('classes')" class="px-8 py-4 border-2 border-white/30 text-white font-bold text-lg rounded-full hover:bg-white/10 transition-all hover:border-orange-500">
+                        View Classes
+                    </button>
+                </div>
+
+                <!-- Stats -->
+                <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-white/10 pt-10">
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-orange-500 stat-number" data-target="3500">0</div>
+                        <div class="text-sm text-gray-400 uppercase tracking-wider mt-2">Members</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-orange-500 stat-number" data-target="50">0</div>
+                        <div class="text-sm text-gray-400 uppercase tracking-wider mt-2">Expert Trainers</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-orange-500 stat-number" data-target="80">0</div>
+                        <div class="text-sm text-gray-400 uppercase tracking-wider mt-2">Weekly Classes</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-orange-500 stat-number" data-target="15">0</div>
+                        <div class="text-sm text-gray-400 uppercase tracking-wider mt-2">Years Experience</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <i class="fas fa-chevron-down text-orange-500 text-2xl"></i>
+            </div>
+        </section>
+
+        <!-- Features Grid -->
+        <section class="py-24 bg-zinc-900 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="heading-font text-4xl md:text-6xl font-bold mb-4">WHY CHOOSE <span class="text-orange-500">IRONPULSE</span></h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto">Experience fitness excellence with cutting-edge facilities designed for serious results.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="group relative bg-black p-8 rounded-2xl border border-white/10 hover:border-orange-500/50 transition-all duration-300 card-hover overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="w-14 h-14 bg-orange-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-dumbbell text-orange-500 text-2xl"></i>
+                        </div>
+                        <h3 class="heading-font text-2xl font-bold mb-3">Premium Equipment</h3>
+                        <p class="text-gray-400 leading-relaxed">Latest Technogym and Hammer Strength machines. Over 200 pieces of equipment maintained to perfection.</p>
+                    </div>
+
+                    <div class="group relative bg-black p-8 rounded-2xl border border-white/10 hover:border-orange-500/50 transition-all duration-300 card-hover overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="w-14 h-14 bg-orange-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-users text-orange-500 text-2xl"></i>
+                        </div>
+                        <h3 class="heading-font text-2xl font-bold mb-3">Expert Coaching</h3>
+                        <p class="text-gray-400 leading-relaxed">Certified trainers from Ghana and abroad. Personalized programs tailored to your specific goals.</p>
+                    </div>
+
+                    <div class="group relative bg-black p-8 rounded-2xl border border-white/10 hover:border-orange-500/50 transition-all duration-300 card-hover overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="w-14 h-14 bg-orange-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-clock text-orange-500 text-2xl"></i>
+                        </div>
+                        <h3 class="heading-font text-2xl font-bold mb-3">24/7 Access</h3>
+                        <p class="text-gray-400 leading-relaxed">Train on your schedule. Round-the-clock access with secure fingerprint entry system.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-24 relative overflow-hidden">
+            <div class="absolute inset-0 bg-orange-600 clip-diagonal-reverse"></div>
+            <div class="absolute inset-0 bg-black/40"></div>
+            <div class="relative z-10 max-w-5xl mx-auto px-4 text-center">
+                <h2 class="heading-font text-4xl md:text-6xl font-bold mb-6 text-white">READY TO TRANSFORM?</h2>
+                <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">Join 2,500+ Ghanaians who have already started their fitness journey with us.</p>
+                <button onclick="navigateTo('membership')" class="bg-black text-white font-bold py-4 px-10 rounded-full text-lg hover:bg-white hover:text-black transition-all transform hover:scale-105 uppercase tracking-wider">
+                    Get Started Today
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <!-- ABOUT PAGE -->
+    <div id="about" class="page">
+        <section class="pt-32 pb-20 min-h-screen">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <h1 class="heading-font text-5xl md:text-7xl font-bold mb-6">OUR <span class="text-orange-500">STORY</span></h1>
+                        <div class="space-y-6 text-gray-300 text-lg leading-relaxed">
+                            <p>Founded in 2009 in the heart of Accra, IronPulse Gym began with a simple mission: to bring world-class fitness facilities to Ghana. What started as a small warehouse gym has grown into the country's premier fitness destination.</p>
+                            <p>We believe that fitness is not just about physical strength—it's about building discipline, confidence, and community. Our facility combines cutting-edge equipment with authentic Ghanaian hospitality.</p>
+                            <p>Today, we stand as a testament to what's possible when passion meets purpose. Our 15,000 sq ft facility in Airport Residential Area serves as a hub for fitness enthusiasts, professional athletes, and beginners alike.</p>
+                        </div>
+                        
+                        <div class="mt-10 grid grid-cols-2 gap-6">
+                            <div class="border-l-4 border-orange-500 pl-4">
+                                <div class="text-3xl font-bold text-white">15+</div>
+                                <div class="text-sm text-gray-400">Years of Excellence</div>
+                            </div>
+                            <div class="border-l-4 border-orange-500 pl-4">
+                                <div class="text-3xl font-bold text-white">50+</div>
+                                <div class="text-sm text-gray-400">Expert Trainers</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-orange-500/20 rounded-3xl blur-2xl"></div>
+                        <div class="relative bg-zinc-900 rounded-2xl overflow-hidden border border-white/10">
+                            <div class="aspect-square bg-gradient-to-br from-zinc-800 to-zinc-900 flex items-center justify-center">
+                                <div class="text-center p-8">
+                                    <i class="fas fa-trophy text-orange-500 text-6xl mb-4"></i>
+                                    <h3 class="heading-font text-2xl font-bold mb-2">Award Winning</h3>
+                                    <p class="text-gray-400">Best Gym in Ghana 2023</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Values -->
+                <div class="mt-24">
+                    <h2 class="heading-font text-4xl font-bold text-center mb-16">OUR <span class="text-orange-500">VALUES</span></h2>
+                    <div class="grid md:grid-cols-4 gap-8">
+                        <div class="text-center p-6">
+                            <div class="w-20 h-20 mx-auto bg-orange-500/10 rounded-full flex items-center justify-center mb-4">
+                                <i class="fas fa-fire text-orange-500 text-3xl"></i>
+                            </div>
+                            <h3 class="heading-font text-xl font-bold mb-2">Passion</h3>
+                            <p class="text-gray-400 text-sm">We bring energy and enthusiasm to every workout.</p>
+                        </div>
+                        <div class="text-center p-6">
+                            <div class="w-20 h-20 mx-auto bg-orange-500/10 rounded-full flex items-center justify-center mb-4">
+                                <i class="fas fa-handshake text-orange-500 text-3xl"></i>
+                            </div>
+                            <h3 class="heading-font text-xl font-bold mb-2">Integrity</h3>
+                            <p class="text-gray-400 text-sm">Honest guidance and transparent practices always.</p>
+                        </div>
+                        <div class="text-center p-6">
+                            <div class="w-20 h-20 mx-auto bg-orange-500/10 rounded-full flex items-center justify-center mb-4">
+                                <i class="fas fa-chart-line text-orange-500 text-3xl"></i>
+                            </div>
+                            <h3 class="heading-font text-xl font-bold mb-2">Excellence</h3>
+                            <p class="text-gray-400 text-sm">Premium facilities and service without compromise.</p>
+                        </div>
+                        <div class="text-center p-6">
+                            <div class="w-20 h-20 mx-auto bg-orange-500/10 rounded-full flex items-center justify-center mb-4">
+                                <i class="fas fa-heart text-orange-500 text-3xl"></i>
+                            </div>
+                            <h3 class="heading-font text-xl font-bold mb-2">Community</h3>
+                            <p class="text-gray-400 text-sm">Stronger together. We lift each other up.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- CLASSES PAGE -->
+    <div id="classes" class="page">
+        <section class="pt-32 pb-20 min-h-screen bg-zinc-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h1 class="heading-font text-5xl md:text-7xl font-bold mb-4">GROUP <span class="text-orange-500">CLASSES</span></h1>
+                    <p class="text-gray-400 max-w-2xl mx-auto text-lg">High-energy sessions led by elite instructors. From HIIT to Yoga, find your perfect workout.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Class Card 1 -->
+                    <div class="group relative bg-black rounded-2xl overflow-hidden border border-white/10 hover:border-orange-500 transition-all duration-300">
+                        <div class="h-48 bg-gradient-to-br from-orange-600 to-red-600 flex items-center justify-center relative overflow-hidden">
+                            <i class="fas fa-fire text-white/20 text-8xl absolute -right-4 -bottom-4"></i>
+                            <i class="fas fa-running text-white text-5xl relative z-10"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="heading-font text-2xl font-bold">HIIT Blast</h3>
+                                <span class="bg-orange-500/20 text-orange-400 px-3 py-1 rounded-full text-xs font-bold">HIGH INTENSITY</span>
+                            </div>
+                            <p class="text-gray-400 mb-4">30-minute high-intensity interval training to maximize calorie burn and build endurance.</p>
+                            <div class="flex items-center justify-between text-sm text-gray-500 border-t border-white/10 pt-4">
+                                <span><i class="far fa-clock mr-2"></i>30 min</span>
+                                <span><i class="fas fa-fire mr-2"></i>500 cal</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Class Card 2 -->
+                    <div class="group relative bg-black rounded-2xl overflow-hidden border border-white/10 hover:border-orange-500 transition-all duration-300">
+                        <div class="h-48 bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center relative overflow-hidden">
+                            <i class="fas fa-water text-white/20 text-8xl absolute -right-4 -bottom-4"></i>
+                            <i class="fas fa-spa text-white text-5xl relative z-10"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="heading-font text-2xl font-bold">Power Yoga</h3>
+                                <span class="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full text-xs font-bold">FLEXIBILITY</span>
+                            </div>
+                            <p class="text-gray-400 mb-4">Dynamic yoga flow focusing on strength, balance, and mental clarity.</p>
+                            <div class="flex items-center justify-between text-sm text-gray-500 border-t border-white/10 pt-4">
+                                <span><i class="far fa-clock mr-2"></i>60 min</span>
+                                <span><i class="fas fa-fire mr-2"></i>300 cal</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Class Card 3 -->
+                    <div class="group relative bg-black rounded-2xl overflow-hidden border border-white/10 hover:border-orange-500 transition-all duration-300">
+                        <div class="h-48 bg-gradient-to-br from-yellow-600 to-orange-600 flex items-center justify-center relative overflow-hidden">
+                            <i class="fas fa-fist-raised text-white/20 text-8xl absolute -right-4 -bottom-4"></i>
+                            <i class="fas fa-boxing-glove text-white text-5xl relative z-10"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="heading-font text-2xl font-bold">Boxing</h3>
+                                <span class="bg-yellow-500/20 text-yellow-400 px-3 py-1 rounded-full text-xs font-bold">COMBAT</span>
+                            </div>
+                            <p class="text-gray-400 mb-4">Learn proper boxing technique while getting an incredible full-body workout.</p>
+                            <div class="flex items-center justify-between text-sm text-gray-500 border-t border-white/10 pt-4">
+                                <span><i class="far fa-clock mr-2"></i>45 min</span>
+                                <span><i class="fas fa-fire mr-2"></i>600 cal</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Class Card 4 -->
+                    <div class="group relative bg-black rounded-2xl overflow-hidden border border-white/10 hover:border-orange-500 transition-all duration-300">
+                        <div class="h-48 bg-gradient-to-br from-green-600 to-teal-600 flex items-center justify-center relative overflow-hidden">
+                            <i class="fas fa-bicycle text-white/20 text-8xl absolute -right-4 -bottom-4"></i>
+                            <i class="fas fa-biking text-white text-5xl relative z-10"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="heading-font text-2xl font-bold">Spin Class</h3>
+                                <span class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-xs font-bold">CARDIO</span>
+                            </div>
+                            <p class="text-gray-400 mb-4">Indoor cycling with pumping music and motivational coaching.</p>
+                            <div class="flex items-center justify-between text-sm text-gray-500 border-t border-white/10 pt-4">
+                                <span><i class="far fa-clock mr-2"></i>45 min</span>
+                                <span><i class="fas fa-fire mr-2"></i>700 cal</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Class Card 5 -->
+                    <div class="group relative bg-black rounded-2xl overflow-hidden border border-white/10 hover:border-orange-500 transition-all duration-300">
+                        <div class="h-48 bg-gradient-to-br from-red-600 to-pink-600 flex items-center justify-center relative overflow-hidden">
+                            <i class="fas fa-heartbeat text-white/20 text-8xl absolute -right-4 -bottom-4"></i>
+                            <i class="fas fa-dumbbell text-white text-5xl relative z-10"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="heading-font text-2xl font-bold">Strength 101</h3>
+                                <span class="bg-red-500/20 text-red-400 px-3 py-1 rounded-full text-xs font-bold">STRENGTH</span>
+                            </div>
+                            <p class="text-gray-400 mb-4">Fundamental weight training focusing on form and progressive overload.</p>
+                            <div class="flex items-center justify-between text-sm text-gray-500 border-t border-white/10 pt-4">
+                                <span><i class="far fa-clock mr-2"></i>60 min</span>
+                                <span><i class="fas fa-fire mr-2"></i>400 cal</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Class Card 6 -->
+                    <div class="group relative bg-black rounded-2xl overflow-hidden border border-white/10 hover:border-orange-500 transition-all duration-300">
+                        <div class="h-48 bg-gradient-to-br from-purple-600 to-indigo-600 flex items-center justify-center relative overflow-hidden">
+                            <i class="fas fa-moon text-white/20 text-8xl absolute -right-4 -bottom-4"></i>
+                            <i class="fas fa-moon text-white text-5xl relative z-10"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="heading-font text-2xl font-bold">Night Crawlers</h3>
+                                <span class="bg-purple-500/20 text-purple-400 px-3 py-1 rounded-full text-xs font-bold">ENDURANCE</span>
+                            </div>
+                            <p class="text-gray-400 mb-4">Late night running club through the safe streets of Airport Residential.</p>
+                            <div class="flex items-center justify-between text-sm text-gray-500 border-t border-white/10 pt-4">
+                                <span><i class="far fa-clock mr-2"></i>90 min</span>
+                                <span><i class="fas fa-fire mr-2"></i>800 cal</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Schedule Preview -->
+                <div class="mt-20 bg-black rounded-3xl p-8 border border-white/10">
+                    <h2 class="heading-font text-3xl font-bold mb-8 text-center">TODAY'S <span class="text-orange-500">SCHEDULE</span></h2>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="flex items-center p-4 bg-zinc-900 rounded-xl border border-white/5">
+                            <div class="w-16 h-16 bg-orange-500/20 rounded-lg flex items-center justify-center mr-4">
+                                <span class="text-orange-500 font-bold">06:00</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Morning HIIT</h4>
+                                <p class="text-sm text-gray-400">Coach Jay</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-4 bg-zinc-900 rounded-xl border border-white/5">
+                            <div class="w-16 h-16 bg-orange-500/20 rounded-lg flex items-center justify-center mr-4">
+                                <span class="text-orange-500 font-bold">12:00</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Power Yoga</h4>
+                                <p class="text-sm text-gray-400">Coach Abass</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-4 bg-zinc-900 rounded-xl border border-white/5">
+                            <div class="w-16 h-16 bg-orange-500/20 rounded-lg flex items-center justify-center mr-4">
+                                <span class="text-orange-500 font-bold">18:00</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Boxing</h4>
+                                <p class="text-sm text-gray-400">Coach Khalifa</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- TRAINERS PAGE -->
+    <div id="trainers" class="page">
+        <section class="pt-32 pb-20 min-h-screen">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h1 class="heading-font text-5xl md:text-7xl font-bold mb-4">ELITE <span class="text-orange-500">TRAINERS</span></h1>
+                    <p class="text-gray-400 max-w-2xl mx-auto text-lg">Learn from the best. Our certified professionals are dedicated to your success.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Trainer 1 -->
+                    <div class="group relative">
+                        <div class="relative overflow-hidden rounded-2xl bg-zinc-900 border border-white/10">
+                            <div class="aspect-[3/4] bg-gradient-to-b from-zinc-800 to-zinc-900 flex items-end justify-center relative">
+                                <div class="absolute inset-0 bg-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                <i class="fas fa-user text-8xl text-zinc-700 mb-8"></i>
+                                <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black to-transparent">
+                                    <h3 class="heading-font text-2xl font-bold text-white">Alex Khalifa</h3>
+                                    <p class="text-orange-500 font-semibold">Head Coach</p>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex gap-2 mb-4">
+                                    <span class="text-xs bg-white/10 px-2 py-1 rounded">Strength</span>
+                                    <span class="text-xs bg-white/10 px-2 py-1 rounded">HIIT</span>
+                                </div>
+                                <p class="text-gray-400 text-sm mb-4">15 years experience. Certified NSCA-CPT. Specializes in athletic performance.</p>
+                                <button onclick="navigateTo('contact')" class="w-full py-2 border border-orange-500 text-orange-500 rounded-full hover:bg-orange-500 hover:text-black transition-all text-sm font-bold">Book Session</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trainer 2 -->
+                    <div class="group relative">
+                        <div class="relative overflow-hidden rounded-2xl bg-zinc-900 border border-white/10">
+                            <div class="aspect-[3/4] bg-gradient-to-b from-zinc-800 to-zinc-900 flex items-end justify-center relative">
+                                <div class="absolute inset-0 bg-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                <i class="fas fa-user text-8xl text-zinc-700 mb-8"></i>
+                                <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black to-transparent">
+                                    <h3 class="heading-font text-2xl font-bold text-white">Larry</h3>
+                                    <p class="text-orange-500 font-semibold">Yoga Specialist</p>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex gap-2 mb-4">
+                                    <span class="text-xs bg-white/10 px-2 py-1 rounded">Yoga</span>
+                                    <span class="text-xs bg-white/10 px-2 py-1 rounded">Pilates</span>
+                                </div>
+                                <p class="text-gray-400 text-sm mb-4">RYT-500 certified. Focuses on mindfulness and functional flexibility training.</p>
+                                <button onclick="navigateTo('contact')" class="w-full py-2 border border-orange-500 text-orange-500 rounded-full hover:bg-orange-500 hover:text-black transition-all text-sm font-bold">Book Session</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trainer 3 -->
+                    <div class="group relative">
+                        <div class="relative overflow-hidden rounded-2xl bg-zinc-900 border border-white/10">
+                            <div class="aspect-[3/4] bg-gradient-to-b from-zinc-800 to-zinc-900 flex items-end justify-center relative">
+                                <div class="absolute inset-0 bg-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                <i class="fas fa-user text-8xl text-zinc-700 mb-8"></i>
+                                <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black to-transparent">
+                                    <h3 class="heading-font text-2xl font-bold text-white">Elvis</h3>
+                                    <p class="text-orange-500 font-semibold">Boxing Coach</p>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex gap-2 mb-4">
+                                    <span class="text-xs bg-white/10 px-2 py-1 rounded">Boxing</span>
+                                    <span class="text-xs bg-white/10 px-2 py-1 rounded">Conditioning</span>
+                                </div>
+                                <p class="text-gray-400 text-sm mb-4">Former national champion. 10 years coaching experience in combat sports.</p>
+                                <button onclick="navigateTo('contact')" class="w-full py-2 border border-orange-500 text-orange-500 rounded-full hover:bg-orange-500 hover:text-black transition-all text-sm font-bold">Book Session</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trainer 4 -->
+                    <div class="group relative">
+                        <div class="relative overflow-hidden rounded-2xl bg-zinc-900 border border-white/10">
+                            <div class="aspect-[3/4] bg-gradient-to-b from-zinc-800 to-zinc-900 flex items-end justify-center relative">
+                                <div class="absolute inset-0 bg-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                <i class="fas fa-user text-8xl text-zinc-700 mb-8"></i>
+                                <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black to-transparent">
+                                    <h3 class="heading-font text-2xl font-bold text-white">Precious Adepa</h3>
+                                    <p class="text-orange-500 font-semibold">Nutritionist</p>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex gap-2 mb-4">
+                                    <span class="text-xs bg-white/10 px-2 py-1 rounded">Nutrition</span>
+                                    <span class="text-xs bg-white/10 px-2 py-1 rounded">Weight Loss</span>
+                                </div>
+                                <p class="text-gray-400 text-sm mb-4">Registered dietitian. Creates customized meal plans for optimal performance.</p>
+                                <button onclick="navigateTo('contact')" class="w-full py-2 border border-orange-500 text-orange-500 rounded-full hover:bg-orange-500 hover:text-black transition-all text-sm font-bold">Book Session</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Join Team CTA -->
+                <div class="mt-20 text-center p-12 bg-gradient-to-r from-orange-600 to-yellow-600 rounded-3xl relative overflow-hidden">
+                    <div class="absolute inset-0 bg-black/20"></div>
+                    <div class="relative z-10">
+                        <h2 class="heading-font text-3xl md:text-4xl font-bold mb-4">WANT TO JOIN OUR TEAM?</h2>
+                        <p class="text-white/90 mb-6 max-w-2xl mx-auto">We're always looking for passionate fitness professionals to join IronPulse.</p>
+                        <button onclick="navigateTo('contact')" class="bg-black text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-black transition-all">Apply Now</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- MEMBERSHIP PAGE -->
+    <div id="membership" class="page">
+        <section class="pt-32 pb-20 min-h-screen bg-zinc-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h1 class="heading-font text-5xl md:text-7xl font-bold mb-4">MEMBERSHIP <span class="text-orange-500">PLANS</span></h1>
+                    <p class="text-gray-400 max-w-2xl mx-auto text-lg">Flexible options designed to fit your lifestyle and fitness goals.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <!-- Basic Plan -->
+                    <div class="relative bg-black rounded-3xl p-8 border border-white/10 hover:border-orange-500/50 transition-all duration-300 card-hover">
+                        <div class="text-center mb-8">
+                            <h3 class="heading-font text-2xl font-bold mb-2">BASIC</h3>
+                            <p class="text-gray-400 text-sm mb-4">Perfect for beginners</p>
+                            <div class="flex items-baseline justify-center">
+                                <span class="text-2xl text-gray-400">GH₵</span>
+                                <span class="text-6xl font-bold text-white ml-1">150</span>
+                                <span class="text-gray-400 ml-2">/month</span>
+                            </div>
+                        </div>
+                        
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check text-orange-500 mr-3"></i>
+                                Gym access (6am - 10pm)
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check text-orange-500 mr-3"></i>
+                                Locker room access
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check text-orange-500 mr-3"></i>
+                                Free weights & machines
+                            </li>
+                            <li class="flex items-center text-gray-500">
+                                <i class="fas fa-times mr-3"></i>
+                                Group classes
+                            </li>
+                            <li class="flex items-center text-gray-500">
+                                <i class="fas fa-times mr-3"></i>
+                                Personal training
+                            </li>
+                        </ul>
+                        
+                        <button onclick="selectPlan('basic')" class="w-full py-4 border-2 border-white/30 text-white font-bold rounded-full hover:bg-white hover:text-black transition-all">Choose Basic</button>
+                    </div>
+
+                    <!-- Premium Plan -->
+                    <div class="relative bg-black rounded-3xl p-8 border-2 border-orange-500 transform md:scale-105 shadow-2xl shadow-orange-500/20">
+                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                            <span class="bg-orange-500 text-black text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider">Most Popular</span>
+                        </div>
+                        
+                        <div class="text-center mb-8">
+                            <h3 class="heading-font text-2xl font-bold mb-2 text-orange-500">PREMIUM</h3>
+                            <p class="text-gray-400 text-sm mb-4">Best value for serious athletes</p>
+                            <div class="flex items-baseline justify-center">
+                                <span class="text-2xl text-gray-400">GH₵</span>
+                                <span class="text-6xl font-bold text-white ml-1">350</span>
+                                <span class="text-gray-400 ml-2">/month</span>
+                            </div>
+                        </div>
+                        
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check text-orange-500 mr-3"></i>
+                                24/7 gym access
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check text-orange-500 mr-3"></i>
+                                Unlimited group classes
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check text-orange-500 mr-3"></i>
+                                Sauna & steam room
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check text-orange-500 mr-3"></i>
+                                2 PT sessions/month
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check text-orange-500 mr-3"></i>
+                                Nutrition consultation
+                            </li>
+                        </ul>
+                        
+                        <button onclick="selectPlan('premium')" class="w-full py-4 bg-orange-500 text-black font-bold rounded-full hover:bg-orange-600 transition-all transform hover:scale-105">Choose Premium</button>
+                    </div>
+
+                    <!-- Elite Plan -->
+                    <div class="relative bg-black rounded-3xl p-8 border border-white/10 hover:border-orange-500/50 transition-all duration-300 card-hover">
+                        <div class="text-center mb-8">
+                            <h3 class="heading-font text-2xl font-bold mb-2">ELITE</h3>
+                            <p class="text-gray-400 text-sm mb-4">The ultimate fitness experience</p>
+                            <div class="flex items-baseline justify-center">
+                                <span class="text-2xl text-gray-400">GH₵</span>
+                                <span class="text-6xl font-bold text-white ml-1">600</span>
+                                <span class="text-gray-400 ml-2">/month</span>
+                            </div>
+                        </div>
+                        
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check text-orange-500 mr-3"></i>
+                                Everything in Premium
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check text-orange-500 mr-3"></i>
+                                Unlimited PT sessions
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check text-orange-500 mr-3"></i>
+                                Priority class booking
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check text-orange-500 mr-3"></i>
+                                Recovery spa access
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check text-orange-500 mr-3"></i>
+                                Guest passes (4/month)
+                            </li>
+                        </ul>
+                        
+                        <button onclick="selectPlan('elite')" class="w-full py-4 border-2 border-white/30 text-white font-bold rounded-full hover:bg-white hover:text-black transition-all">Choose Elite</button>
+                    </div>
+                </div>
+
+                <!-- Additional Info -->
+                <div class="mt-16 grid md:grid-cols-3 gap-8 text-center">
+                    <div class="p-6">
+                        <i class="fas fa-calendar-check text-orange-500 text-3xl mb-4"></i>
+                        <h4 class="font-bold mb-2">No Long-Term Contracts</h4>
+                        <p class="text-gray-400 text-sm">Cancel anytime with 30 days notice</p>
+                    </div>
+                    <div class="p-6">
+                        <i class="fas fa-money-bill-wave text-orange-500 text-3xl mb-4"></i>
+                        <h4 class="font-bold mb-2">Student Discounts</h4>
+                        <p class="text-gray-400 text-sm">20% off with valid student ID</p>
+                    </div>
+                    <div class="p-6">
+                        <i class="fas fa-users text-orange-500 text-3xl mb-4"></i>
+                        <h4 class="font-bold mb-2">Corporate Rates</h4>
+                        <p class="text-gray-400 text-sm">Special packages for companies</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- CONTACT PAGE -->
+    <div id="contact" class="page">
+        <section class="pt-32 pb-20 min-h-screen">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16">
+                    <!-- Contact Info -->
+                    <div>
+                        <h1 class="heading-font text-5xl md:text-6xl font-bold mb-6">GET IN <span class="text-orange-500">TOUCH</span></h1>
+                        <p class="text-gray-400 text-lg mb-10">Ready to start your fitness journey? Visit us for a free tour or drop us a message.</p>
+                        
+                        <div class="space-y-8">
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-map-marker-alt text-orange-500 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-1">Location</h3>
+                                    <p class="text-gray-400">Fulani, Ashiyie (Near Pentecost Church)<br>Lorraine Street, Accra, Ghana</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-phone text-orange-500 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-1">Phone</h3>
+                                    <p class="text-gray-400">+233 53 935 0930<br>+233 53 334 0177</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-envelope text-orange-500 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-1">Email</h3>
+                                    <p class="text-gray-400">info@ironpulse.com.gh<br>memberships@ironpulse.com.gh</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-clock text-orange-500 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-1">Hours</h3>
+                                    <p class="text-gray-400">Mon-Fri: 5:00 AM - 11:00 PM<br>Sat-Sun: 6:00 AM - 10:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Social Links -->
+                        <div class="mt-10 flex space-x-4">
+                            <a href="#" class="w-12 h-12 bg-zinc-900 rounded-full flex items-center justify-center hover:bg-orange-500 hover:text-black transition-all">
+                                <i class="fab fa-instagram text-xl"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-zinc-900 rounded-full flex items-center justify-center hover:bg-orange-500 hover:text-black transition-all">
+                                <i class="fab fa-facebook text-xl"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-zinc-900 rounded-full flex items-center justify-center hover:bg-orange-500 hover:text-black transition-all">
+                                <i class="fab fa-twitter text-xl"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-zinc-900 rounded-full flex items-center justify-center hover:bg-orange-500 hover:text-black transition-all">
+                                <i class="fab fa-tiktok text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="bg-zinc-900 p-8 rounded-3xl border border-white/10">
+                        <h2 class="heading-font text-2xl font-bold mb-6">SEND US A MESSAGE</h2>
+                        <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-6">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-400 mb-2">First Name</label>
+                                    <input type="text" required class="w-full bg-black border border-white/20 rounded-lg px-4 py-3 text-white focus:border-orange-500 focus:outline-none transition-colors" placeholder="John">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-400 mb-2">Last Name</label>
+                                    <input type="text" required class="w-full bg-black border border-white/20 rounded-lg px-4 py-3 text-white focus:border-orange-500 focus:outline-none transition-colors" placeholder="Doe">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-400 mb-2">Email</label>
+                                <input type="email" required class="w-full bg-black border border-white/20 rounded-lg px-4 py-3 text-white focus:border-orange-500 focus:outline-none transition-colors" placeholder="john@example.com">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-400 mb-2">Phone</label>
+                                <input type="tel" class="w-full bg-black border border-white/20 rounded-lg px-4 py-3 text-white focus:border-orange-500 focus:outline-none transition-colors" placeholder="+233 XX XXX XXXX">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-400 mb-2">Interest</label>
+                                <select class="w-full bg-black border border-white/20 rounded-lg px-4 py-3 text-white focus:border-orange-500 focus:outline-none transition-colors">
+                                    <option>General Inquiry</option>
+                                    <option>Membership</option>
+                                    <option>Personal Training</option>
+                                    <option>Corporate Partnership</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-400 mb-2">Message</label>
+                                <textarea rows="4" required class="w-full bg-black border border-white/20 rounded-lg px-4 py-3 text-white focus:border-orange-500 focus:outline-none transition-colors" placeholder="How can we help you?"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-orange-500 text-black font-bold py-4 rounded-lg hover:bg-orange-600 transition-all transform hover:scale-[1.02]">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Map Placeholder -->
+                <div class="mt-16 rounded-3xl overflow-hidden border border-white/10 h-96 bg-zinc-900 flex items-center justify-center relative">
+                    <div class="absolute inset-0 bg-gradient-to-br from-zinc-800 to-zinc-900"></div>
+                    <div class="relative z-10 text-center">
+                        <i class="fas fa-map-marked-alt text-orange-500 text-6xl mb-4"></i>
+                        <p class="text-gray-400">Interactive Map Integration</p>
+                        <p class="text-sm text-gray-600">Airport Residential Area, Accra</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-white/10 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center mr-2">
+                            <i class="fas fa-dumbbell text-black text-sm"></i>
+                        </div>
+                        <span class="heading-font text-xl font-bold">IRON<span class="text-orange-500">PULSE</span></span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Ghana's premier fitness destination. Transforming lives through strength, discipline, and community since 2009.</p>
+                </div>
+                
+                <div>
+                    <h4 class="heading-font font-bold mb-4 text-lg">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><button onclick="navigateTo('about')" class="hover:text-orange-500 transition-colors">About Us</button></li>
+                        <li><button onclick="navigateTo('classes')" class="hover:text-orange-500 transition-colors">Classes</button></li>
+                        <li><button onclick="navigateTo('trainers')" class="hover:text-orange-500 transition-colors">Trainers</button></li>
+                        <li><button onclick="navigateTo('membership')" class="hover:text-orange-500 transition-colors">Membership</button></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="heading-font font-bold mb-4 text-lg">Services</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><span class="hover:text-orange-500 transition-colors cursor-pointer">Personal Training</span></li>
+                        <li><span class="hover:text-orange-500 transition-colors cursor-pointer">Group Classes</span></li>
+                        <li><span class="hover:text-orange-500 transition-colors cursor-pointer">Nutrition Coaching</span></li>
+                        <li><span class="hover:text-orange-500 transition-colors cursor-pointer">Corporate Wellness</span></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="heading-font font-bold mb-4 text-lg">Newsletter</h4>
+                    <p class="text-gray-400 text-sm mb-4">Subscribe for fitness tips and exclusive offers.</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Your email" class="flex-1 bg-zinc-900 border border-white/20 rounded-l-lg px-4 py-2 text-sm text-white focus:outline-none focus:border-orange-500">
+                        <button class="bg-orange-500 text-black px-4 py-2 rounded-r-lg font-bold hover:bg-orange-600 transition-colors">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm">&copy; 2026 IronPulse Gym Ghana. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0 text-sm text-gray-500">
+                    <span class="hover:text-white cursor-pointer transition-colors">Privacy Policy</span>
+                    <span class="hover:text-white cursor-pointer transition-colors">Terms of Service</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-4 right-4 bg-zinc-900 border border-orange-500 text-white px-6 py-4 rounded-lg shadow-2xl transform translate-y-20 opacity-0 transition-all duration-300 z-50 flex items-center">
+        <i class="fas fa-check-circle text-orange-500 mr-3 text-xl"></i>
+        <span id="toastMessage">Message sent successfully!</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+</body>
+</html>
