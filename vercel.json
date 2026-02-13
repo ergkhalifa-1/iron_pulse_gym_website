@@ -1,0 +1,11 @@
+{
+  "buildCommand": "",
+  "outputDirectory": ".",
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/((?!.*\\.[^/]{2,})(?:\\/)?(?:index\\.html)?)?$",
+      "destination": "/index2.html"
+    }
+  ]
+}
